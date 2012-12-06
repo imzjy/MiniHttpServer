@@ -3,6 +3,7 @@ MiniHttpServer
 
 ## Introduction
 Mini HTTP Server which can be embed in EXE
+Writen in C#(.net framework 2.0)
 
 ### What we provide
 
