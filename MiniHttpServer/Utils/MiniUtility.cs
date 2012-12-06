@@ -5,7 +5,7 @@ using System.Net;
 using System.IO;
 using System.Collections.Specialized;
 
-namespace MiniHttpServer.Utils
+namespace MyMiniHttpServer.Utils
 {
     public class MiniUtility
     {

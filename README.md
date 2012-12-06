@@ -25,6 +25,9 @@ Please apply your own template engine, it depends on you.
 
 ## Usage
 ```c
+using MyMiniHttpServer;
+
+
 MiniHttpServer server = new MiniHttpServer(8081); //start http server on port of 8081
 
 //register the handler(s) and start the server

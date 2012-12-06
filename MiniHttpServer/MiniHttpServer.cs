@@ -5,7 +5,7 @@ using System.Net;
 using System.IO;
 using System.Threading;
 
-namespace MiniHttpServer
+namespace MyMiniHttpServer
 {
     public class MiniHttpServer
     {
