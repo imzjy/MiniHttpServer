@@ -25,8 +25,25 @@ Please apply your own template engine, it depends on you.
 ```c
 MiniHttpServer server = new MiniHttpServer(8081); //start http server on port of 8081
 
-//register the handler and start the server
+//register the handler(s) and start the server
 server.RegisterHandler("/index", IndexHandler);
 server.Start();
+
+void IndexHandler(object sender, ContextEventArgs e)
+{
+    string responseString = string.Format("<HTML><BODY> Hello world! {0}</BODY></HTML>", DateTime.Now);
+
+    // Obtain a response object.
+    HttpListenerResponse response = e.Context.Response;
+    byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
+    // Get a response stream and write the response to it.
+    response.ContentLength64 = buffer.Length;
+    System.IO.Stream output = response.OutputStream;
+    output.Write(buffer, 0, buffer.Length);
+    // You must close the output stream.
+    output.Close();
+
+}
 ```
+
 
