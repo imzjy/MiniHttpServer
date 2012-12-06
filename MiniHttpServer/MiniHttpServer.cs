@@ -39,9 +39,6 @@ namespace MiniHttpServer
             {
                 ThreadPool.QueueUserWorkItem(WorkerThread, listener);
             }
-
-            while (listener.IsListening)
-            { }
         }
 
         public void Stop()
@@ -55,8 +52,15 @@ namespace MiniHttpServer
 
             while (listener.IsListening)
             {
-                HttpListenerContext context = listener.GetContext();
-                ProcessRequest(this, new ContextEventArgs(context));
+                try
+                {
+                    HttpListenerContext context = listener.GetContext();
+                    ProcessRequest(this, new ContextEventArgs(context));
+                }
+                catch (HttpListenerException)
+                {
+                    //catch exception when stop listener 
+                }
             }
         }
     }
