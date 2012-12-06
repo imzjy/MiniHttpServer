@@ -5,6 +5,7 @@ using MiniHttpServer;
 using System.Net;
 using System.IO;
 using System.Threading;
+using System.Data.SqlServerCe;
 
 namespace MiniHttpServer.Test
 {
@@ -12,12 +13,15 @@ namespace MiniHttpServer.Test
     {
         static void Main(string[] args)
         {
-            MiniHttpServer server = new MiniHttpServer(10, new string[] { "http://localhost:8081/index/" });
-            server.ProcessRequest += new EventHandler<ContextEventArgs>(server_ProcessRequest);
+            MiniHttpServer server = new MiniHttpServer(8081);
+
+            server.RegisterHandler("/index", IndexHandler);
             server.Start();
+
+            Console.ReadKey();
         }
 
-        static void server_ProcessRequest(object sender, ContextEventArgs e)
+        static void IndexHandler(object sender, ContextEventArgs e)
         {
 
             string requestStr = string.Empty;
