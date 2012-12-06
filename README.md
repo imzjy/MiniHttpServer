@@ -4,7 +4,8 @@ MiniHttpServer
 ## Introduction
 Mini HTTP Server which can be embed in EXE
 
-** What we provide **
+### What we provide
+
 HTTP request dispatch/route, you can register the handlers for a specific url.
 Url match using start with in order, so that register the more specific in first.
 For example:
@@ -15,7 +16,8 @@ server.RegisterHandler("/index", GeneralIndexHandler);
 When url request be handled, stop propagation.
 That's when we requst the "/index/1", and it's handle already. GeneralIndexHandler will NOT execute.
 
-** What we NOT provide **
+### What we NOT provide
+
 We do not provide the template engine to keep http server simple.
 Please apply your own template engine, it depends on you.
 
