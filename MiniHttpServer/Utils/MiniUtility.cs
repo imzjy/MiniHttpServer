@@ -26,5 +26,13 @@ namespace Jatsz.MiniHttpServer.Utils
             }
             return formValues;
         }
+
+        public static void ResponseWrite(HttpListenerResponse response, string content)
+        {
+            using (StreamWriter sw = new StreamWriter(response.OutputStream))
+            {
+                sw.Write(content);
+            }
+        }
     }
 }
