@@ -8,7 +8,7 @@
     <ProjectGuid>{DAC5D76C-2055-43D7-A42C-BCB4118D6191}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyMiniHttpServer.Test</RootNamespace>
+    <RootNamespace>Jatsz.MiniHttpServer.Test</RootNamespace>
     <AssemblyName>MiniHttpServer.Test</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

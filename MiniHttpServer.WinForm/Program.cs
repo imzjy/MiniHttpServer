@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace MyMiniHttpServer.WinForm
+namespace Jatsz.MiniHttpServer.WinForm
 {
     static class Program
     {

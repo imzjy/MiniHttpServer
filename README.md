@@ -25,7 +25,7 @@ Please apply your own template engine, it depends on you.
 
 ## Usage
 ```c
-using MyMiniHttpServer;
+using Jatsz.MiniHttpServer;
 
 
 MiniHttpServer server = new MiniHttpServer(8081); //start http server on port of 8081

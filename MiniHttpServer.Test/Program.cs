@@ -6,7 +6,7 @@ using System.IO;
 using System.Threading;
 using System.Data.SqlServerCe;
 
-namespace MyMiniHttpServer.Test
+namespace Jatsz.MiniHttpServer.Test
 {
     class Program
     {

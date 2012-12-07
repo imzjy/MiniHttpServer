@@ -5,7 +5,7 @@ using System.Net;
 using System.IO;
 using System.Threading;
 
-namespace MyMiniHttpServer
+namespace Jatsz.MiniHttpServer
 {
     public class MiniHttpServer
     {

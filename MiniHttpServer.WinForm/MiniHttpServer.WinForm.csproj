@@ -8,7 +8,7 @@
     <ProjectGuid>{119A6668-E830-4435-8C7D-B7260A58C000}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyMiniHttpServer.WinForm</RootNamespace>
+    <RootNamespace>Jatsz.MiniHttpServer.WinForm</RootNamespace>
     <AssemblyName>MiniHttpServer.WinForm</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

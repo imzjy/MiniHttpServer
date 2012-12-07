@@ -6,12 +6,12 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Net;
-using MyMiniHttpServer;
-using MyMiniHttpServer.Utils;
+using Jatsz.MiniHttpServer;
+using Jatsz.MiniHttpServer.Utils;
 using System.IO;
 using System.Collections.Specialized;
 
-namespace MyMiniHttpServer.WinForm
+namespace Jatsz.MiniHttpServer.WinForm
 {
     public partial class Form1 : Form
     {
