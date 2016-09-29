@@ -114,7 +114,7 @@ namespace Imzjy.MiniHttpServer
         /// <param name="context"></param>
         private void DefaultHander(HttpListenerContext context)
         {
-            string html = string.Format("Not Handled:[{0}]{1} at {1}", context.Request.HttpMethod, context.Request.RawUrl, DateTime.Now);
+            string html = string.Format("Not Handled:[{0}] {1} at {2}", context.Request.HttpMethod, context.Request.RawUrl, DateTime.Now);
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(html);
 
             HttpListenerResponse response = context.Response;

@@ -15,7 +15,7 @@ namespace Imzjy.MiniHttpServer.Test
         {
             MiniHttpServer server = new MiniHttpServer(8383);
 
-            server.Route("^/index$", "GET", IndexHandler);
+            server.Route("^/$", "GET", IndexHandler);
             server.Route("^/index$", "POST", IndexHandler);
             server.Start();
 
