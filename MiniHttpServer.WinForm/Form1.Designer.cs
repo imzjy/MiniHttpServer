@@ -1,4 +1,4 @@
-﻿namespace Jatsz.MiniHttpServer.WinForm
+﻿namespace Imzjy.MiniHttpServer.WinForm
 {
     partial class Form1
     {

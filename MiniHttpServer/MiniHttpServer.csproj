@@ -8,7 +8,7 @@
     <ProjectGuid>{AF9C9B2F-4507-43B4-A378-04B4E13F5770}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Jatsz.MiniHttpServer</RootNamespace>
+    <RootNamespace>Imzjy.MiniHttpServer</RootNamespace>
     <AssemblyName>MiniHttpServer</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -36,9 +36,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContextEventArgs.cs" />
     <Compile Include="MiniHttpServer.cs" />
+    <Compile Include="Mini\MiniRegisteredHandler.cs" />
+    <Compile Include="Mini\MiniRequest.cs" />
+    <Compile Include="Mini\MiniResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Mini\MiniReqeustHandler.cs" />
     <Compile Include="Utils\MiniUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

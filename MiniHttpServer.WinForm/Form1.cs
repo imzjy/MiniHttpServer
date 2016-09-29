@@ -6,12 +6,12 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Net;
-using Jatsz.MiniHttpServer;
-using Jatsz.MiniHttpServer.Utils;
+using Imzjy.MiniHttpServer;
+using Imzjy.MiniHttpServer.Utils;
 using System.IO;
 using System.Collections.Specialized;
 
-namespace Jatsz.MiniHttpServer.WinForm
+namespace Imzjy.MiniHttpServer.WinForm
 {
     public partial class Form1 : Form
     {
@@ -24,7 +24,7 @@ namespace Jatsz.MiniHttpServer.WinForm
         {
             MiniHttpServer server = new MiniHttpServer(5,8080);
 
-            server.RegisterHandler("/log", LogHandler);
+            server.Route("/log", LogHandler);
             server.Start();
 
             btnStart.Enabled = false;

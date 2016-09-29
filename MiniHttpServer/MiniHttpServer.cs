@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.IO;
 using System.Threading;
+using Imzjy.MiniHttpServer.Mini;
 
-namespace Jatsz.MiniHttpServer
+namespace Imzjy.MiniHttpServer
 {
     public class MiniHttpServer
     {
         private int _numOfProcessThread = 1;
         private int _listenPort = 8080;
-        private Dictionary<string, EventHandler<ContextEventArgs>> _registeredHandlers = new Dictionary<string, EventHandler<ContextEventArgs>>();
+        private List<MiniRegisteredHandler> _registeredHandlers = new List<MiniRegisteredHandler>();
         private HttpListener listener = new HttpListener();
 
         public MiniHttpServer(int numOfProcessThread, int listenPort)
@@ -19,19 +21,19 @@ namespace Jatsz.MiniHttpServer
             _numOfProcessThread = numOfProcessThread;
             _listenPort = listenPort;
 
-            string prefix = string.Format("http://*:{0}/",_listenPort);
+            string prefix = string.Format("http://*:{0}/", _listenPort);
             listener.Prefixes.Add(prefix);
- 
+
         }
         public MiniHttpServer(int listenPort)
-            :this(1,listenPort)
+            : this(1, listenPort)
         { }
 
         public void Start()
         {
             if (!HttpListener.IsSupported)
                 throw new NotSupportedException("Windows XP SP2 or Server 2003 is required to use the HttpListener class.");
-            
+
 
             listener.Start();
             Console.WriteLine("Listening...");
@@ -47,9 +49,13 @@ namespace Jatsz.MiniHttpServer
             listener.Stop();
         }
 
-        public void RegisterHandler(string prefix, EventHandler<ContextEventArgs> handler)
+        public void Route(string urlPattern, string httpMethod, MiniRequestHandler handler)
         {
-            _registeredHandlers.Add(prefix, handler);
+            Regex pattern = new Regex(urlPattern);
+            MiniRegisteredHandler registeredHandler = new MiniRegisteredHandler(pattern, httpMethod, handler);
+
+            _registeredHandlers.Add(registeredHandler);
+            
         }
 
         private void WorkerThread(object objListener)
@@ -82,9 +88,14 @@ namespace Jatsz.MiniHttpServer
             HttpListenerRequest request = context.Request;
             foreach (var handler in _registeredHandlers)
             {
-                if (request.RawUrl.StartsWith(handler.Key))
+                if (handler.UrlPattern.IsMatch(request.RawUrl) && handler.HttpMethod == context.Request.HttpMethod)
                 {
-                    handler.Value(this, new ContextEventArgs(context));
+                    MiniRequest req = new MiniRequest(context.Request);
+                    MiniResponse resp = new MiniResponse(context.Response);
+
+                    handler.RequestHandler(req, resp);
+                    resp.Finish();
+
                     isHandled = true;
                     break; //it's been handled, stop propagation
                 }
@@ -103,7 +114,7 @@ namespace Jatsz.MiniHttpServer
         /// <param name="context"></param>
         private void DefaultHander(HttpListenerContext context)
         {
-            string html = string.Format("<HTML><BODY> <div>Not Handled:{0}</div> <div>{1}</div></BODY></HTML>", context.Request.RawUrl, DateTime.Now);
+            string html = string.Format("Not Handled:[{0}]{1} at {1}", context.Request.HttpMethod, context.Request.RawUrl, DateTime.Now);
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(html);
 
             HttpListenerResponse response = context.Response;
